@@ -1,6 +1,8 @@
 """FastAPI wrapper around the framework-free inference core (app/core/inference.py, unchanged). Endpoints: POST /assess, POST /explain (additive), GET /meta."""
 from contextlib import asynccontextmanager
 from pathlib import Path
+import os
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from .artifacts import build_meta, load_bundle, verify_manifest
@@ -15,6 +17,19 @@ def create_app(artifact_dir=None):
         app.state.assessor = Assessor(str(d)); app.state.explainer = Explainer(app.state.assessor); app.state.meta = build_meta(bundle["contract"], bundle["card"]); yield
     app = FastAPI(title="Track A - Cardiovascular Risk Assessment API", version=bundle["contract"]["contract_version"], lifespan=lifespan,
                   description="Decision support / educational use only. Not a diagnosis and not a substitute for formal diagnostic imaging.")
+        origins = [
+        origin.strip()
+        for origin in os.getenv("FRONTEND_ORIGINS", "http://localhost:5173").split(",")
+        if origin.strip()
+    ]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=False,
+        allow_methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"],
+    )
     err_schema = _strip(bundle["error_schema"])
     @app.post("/assess", summary="Assess CAD and LAD/LCX/RCA stenosis probabilities for one patient",
               openapi_extra={"requestBody": {"required": True, "content": {"application/json": {"schema": _strip(bundle["request_schema"])}}}},
