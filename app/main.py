@@ -17,7 +17,8 @@ def create_app(artifact_dir=None):
         app.state.assessor = Assessor(str(d)); app.state.explainer = Explainer(app.state.assessor); app.state.meta = build_meta(bundle["contract"], bundle["card"]); yield
     app = FastAPI(title="Track A - Cardiovascular Risk Assessment API", version=bundle["contract"]["contract_version"], lifespan=lifespan,
                   description="Decision support / educational use only. Not a diagnosis and not a substitute for formal diagnostic imaging.")
-        origins = [
+        
+    origins = [
         origin.strip()
         for origin in os.getenv("FRONTEND_ORIGINS", "http://localhost:5173").split(",")
         if origin.strip()
