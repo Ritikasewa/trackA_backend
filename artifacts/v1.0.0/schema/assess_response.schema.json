@@ -1,0 +1,334 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "trackA/assess_response/1.0.0",
+ "title": "AssessResponse",
+ "type": "object",
+ "required": [
+  "contract_version",
+  "model_version",
+  "assessment_id",
+  "predictions",
+  "model_performance",
+  "consistency",
+  "input_checks",
+  "uncertainty",
+  "data_support",
+  "population_note",
+  "disclaimer"
+ ],
+ "properties": {
+  "contract_version": {
+   "const": "1.0.0"
+  },
+  "model_version": {
+   "type": "string"
+  },
+  "request_id": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "assessment_id": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "predictions": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "CAD",
+    "LAD",
+    "LCX",
+    "RCA"
+   ],
+   "properties": {
+    "CAD": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "target",
+      "label",
+      "probability",
+      "model_type",
+      "definition"
+     ],
+     "properties": {
+      "target": {
+       "const": "CAD"
+      },
+      "label": {
+       "type": "string"
+      },
+      "probability": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "model_type": {
+       "enum": [
+        "logistic_regression",
+        "xgboost"
+       ]
+      },
+      "definition": {
+       "type": "string"
+      }
+     }
+    },
+    "LAD": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "target",
+      "label",
+      "probability",
+      "model_type",
+      "definition"
+     ],
+     "properties": {
+      "target": {
+       "const": "LAD"
+      },
+      "label": {
+       "type": "string"
+      },
+      "probability": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "model_type": {
+       "enum": [
+        "logistic_regression",
+        "xgboost"
+       ]
+      },
+      "definition": {
+       "type": "string"
+      }
+     }
+    },
+    "LCX": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "target",
+      "label",
+      "probability",
+      "model_type",
+      "definition"
+     ],
+     "properties": {
+      "target": {
+       "const": "LCX"
+      },
+      "label": {
+       "type": "string"
+      },
+      "probability": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "model_type": {
+       "enum": [
+        "logistic_regression",
+        "xgboost"
+       ]
+      },
+      "definition": {
+       "type": "string"
+      }
+     }
+    },
+    "RCA": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "target",
+      "label",
+      "probability",
+      "model_type",
+      "definition"
+     ],
+     "properties": {
+      "target": {
+       "const": "RCA"
+      },
+      "label": {
+       "type": "string"
+      },
+      "probability": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "model_type": {
+       "enum": [
+        "logistic_regression",
+        "xgboost"
+       ]
+      },
+      "definition": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  },
+  "model_performance": {
+   "type": "object",
+   "required": [
+    "CAD",
+    "LAD",
+    "LCX",
+    "RCA"
+   ],
+   "properties": {
+    "CAD": {
+     "type": "object",
+     "required": [
+      "cv_roc_auc",
+      "cv_brier",
+      "no_skill_brier",
+      "calibration_slope",
+      "discrimination_tier",
+      "note"
+     ]
+    },
+    "LAD": {
+     "type": "object",
+     "required": [
+      "cv_roc_auc",
+      "cv_brier",
+      "no_skill_brier",
+      "calibration_slope",
+      "discrimination_tier",
+      "note"
+     ]
+    },
+    "LCX": {
+     "type": "object",
+     "required": [
+      "cv_roc_auc",
+      "cv_brier",
+      "no_skill_brier",
+      "calibration_slope",
+      "discrimination_tier",
+      "note"
+     ]
+    },
+    "RCA": {
+     "type": "object",
+     "required": [
+      "cv_roc_auc",
+      "cv_brier",
+      "no_skill_brier",
+      "calibration_slope",
+      "discrimination_tier",
+      "note"
+     ]
+    }
+   }
+  },
+  "consistency": {
+   "type": "object",
+   "required": [
+    "vessels_exceeding_cad",
+    "margin",
+    "probabilities_modified",
+    "note"
+   ],
+   "properties": {
+    "vessels_exceeding_cad": {
+     "type": "array",
+     "items": {
+      "enum": [
+       "LAD",
+       "LCX",
+       "RCA"
+      ]
+     },
+     "description": "Warning only. Predicted probabilities are never modified, clamped or normalized."
+    },
+    "margin": {
+     "type": "number",
+     "description": "Display heuristic for the warning below; NOT a clinical or statistical threshold."
+    },
+    "probabilities_modified": {
+     "const": false
+    },
+    "note": {
+     "type": "string"
+    }
+   }
+  },
+  "input_checks": {
+   "type": "object",
+   "required": [
+    "derived",
+    "out_of_observed_range",
+    "sparse_categories",
+    "extrapolation_flag"
+   ],
+   "properties": {
+    "derived": {
+     "type": "object",
+     "required": [
+      "bmi"
+     ]
+    },
+    "out_of_observed_range": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "field",
+       "level"
+      ]
+     }
+    },
+    "sparse_categories": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "field",
+       "value",
+       "training_count"
+      ]
+     }
+    },
+    "extrapolation_flag": {
+     "type": "boolean"
+    }
+   },
+   "description": "Data-support information about the entered values relative to the training data. These flags are NOT a measure of prediction uncertainty."
+  },
+  "uncertainty": {
+   "type": "null",
+   "description": "Reserved. Bootstrap/CV variability intervals will be added in a minor version (additive)."
+  },
+  "data_support": {
+   "type": "null",
+   "description": "Reserved. Nearest-neighbour distance support check (additive)."
+  },
+  "population_note": {
+   "type": "string"
+  },
+  "disclaimer": {
+   "type": "object",
+   "required": [
+    "short",
+    "text",
+    "required_display"
+   ],
+   "properties": {
+    "required_display": {
+     "const": true
+    }
+   }
+  }
+ }
+}

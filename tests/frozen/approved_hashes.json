@@ -1,0 +1,109 @@
+{
+ "models": {
+  "CAD": {
+   "file": "models/CAD_lr.json",
+   "sha256": "c0c1517deef0b544aea01d323945d7e2d447883acc91ecc28f792f046a1a10c4",
+   "model_type": "logistic_regression",
+   "hyperparameters": {
+    "C": 0.1
+   }
+  },
+  "LAD": {
+   "file": "models/LAD_lr.json",
+   "sha256": "eea2a53a9933e1a601ce32b5688cb5643dddb587d483606aee229632838e1636",
+   "model_type": "logistic_regression",
+   "hyperparameters": {
+    "C": 0.03
+   }
+  },
+  "LCX": {
+   "file": "models/LCX_xgb.json",
+   "sha256": "b977da32d8e77fa935ac9d0df8f254db5131aebf42fc66c183db9e375a258931",
+   "model_type": "xgboost",
+   "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 2,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.6,
+    "min_child_weight": 2,
+    "reg_lambda": 2,
+    "tree_method": "hist",
+    "random_state": 0,
+    "objective": "binary:logistic"
+   }
+  },
+  "RCA": {
+   "file": "models/RCA_lr.json",
+   "sha256": "4be68df35b585ebee671503d59576761c91249caf9db18639161198e5ac40cb0",
+   "model_type": "logistic_regression",
+   "hyperparameters": {
+    "C": 0.03
+   }
+  }
+ },
+ "inference_py_sha256": "6b6076a944be7b03c3047c3280f33d5405209b35fc7d52534aef0e6bd110ffd9",
+ "feature_order": [
+  "Age",
+  "Weight",
+  "Length",
+  "Sex",
+  "BMI",
+  "DM",
+  "HTN",
+  "Current Smoker",
+  "EX-Smoker",
+  "FH",
+  "CRF",
+  "CVA",
+  "Airway disease",
+  "Thyroid Disease",
+  "CHF",
+  "DLP",
+  "BP",
+  "PR",
+  "Edema",
+  "Weak Peripheral Pulse",
+  "Lung rales",
+  "Systolic Murmur",
+  "Diastolic Murmur",
+  "Typical Chest Pain",
+  "Dyspnea",
+  "Function Class",
+  "Atypical",
+  "Nonanginal",
+  "LowTH Ang",
+  "Q Wave",
+  "St Elevation",
+  "St Depression",
+  "Tinversion",
+  "LVH",
+  "Poor R Progression",
+  "FBS",
+  "CR",
+  "TG",
+  "LDL",
+  "HDL",
+  "BUN",
+  "ESR",
+  "HB",
+  "K",
+  "Na",
+  "WBC",
+  "Lymph",
+  "Neut",
+  "PLT",
+  "EF-TTE",
+  "Region RWMA",
+  "VHD",
+  "BBB_LBBB",
+  "BBB_RBBB"
+ ],
+ "training_stats_sha256": "80ee81182e52bb77bde535da169f70edff3ce47aa088c5917d5ee61f82446d02",
+ "reference_train_features_sha256": "5fddf7f4325fa5766717192bed9b5c7b23a5ee94a39d3448d30feb213017e92f",
+ "golden_responses_sha256": "dfd17ac5be53ae8ed09e566624505a4566091622956c7ffad0c5550e67fbd1a3",
+ "golden_requests_sha256": "cff3e1c76d8482f280efe89d47735d7236abe42b00f3ca7dacbe04dd9ff53a73",
+ "consistency_margin": 0.1,
+ "sparse_category_threshold": 10,
+ "n_required_patient_fields": 50
+}

@@ -1,0 +1,329 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "trackA/assess_request/1.0.0",
+ "title": "AssessRequest",
+ "type": "object",
+ "required": [
+  "patient"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "request_id": {
+   "type": "string",
+   "minLength": 1,
+   "maxLength": 128
+  },
+  "patient": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "age",
+    "sex",
+    "weight_kg",
+    "height_cm",
+    "diabetes",
+    "hypertension",
+    "current_smoker",
+    "ex_smoker",
+    "family_history",
+    "dyslipidemia",
+    "chronic_renal_failure",
+    "cerebrovascular_accident",
+    "airway_disease",
+    "thyroid_disease",
+    "congestive_heart_failure",
+    "bp_mmhg",
+    "pulse_rate_bpm",
+    "edema",
+    "weak_peripheral_pulse",
+    "lung_rales",
+    "systolic_murmur",
+    "diastolic_murmur",
+    "chest_pain_type",
+    "dyspnea",
+    "function_class",
+    "low_threshold_angina",
+    "q_wave",
+    "st_elevation",
+    "st_depression",
+    "t_inversion",
+    "lvh",
+    "poor_r_progression",
+    "bundle_branch_block",
+    "fbs",
+    "creatinine",
+    "tg",
+    "ldl",
+    "hdl",
+    "bun",
+    "esr",
+    "hemoglobin",
+    "potassium",
+    "sodium",
+    "wbc",
+    "lymphocyte_pct",
+    "neutrophil_pct",
+    "platelets",
+    "ef_tte_pct",
+    "rwma_region",
+    "valvular_heart_disease"
+   ],
+   "properties": {
+    "age": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Age (years)"
+    },
+    "sex": {
+     "type": "string",
+     "enum": [
+      "male",
+      "female"
+     ],
+     "description": "Sex"
+    },
+    "weight_kg": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "description": "Weight (kg)"
+    },
+    "height_cm": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "description": "Height (cm)"
+    },
+    "diabetes": {
+     "type": "boolean",
+     "description": "Diabetes mellitus"
+    },
+    "hypertension": {
+     "type": "boolean",
+     "description": "Hypertension (history)"
+    },
+    "current_smoker": {
+     "type": "boolean",
+     "description": "Current smoker"
+    },
+    "ex_smoker": {
+     "type": "boolean",
+     "description": "Ex-smoker"
+    },
+    "family_history": {
+     "type": "boolean",
+     "description": "Family history of CAD"
+    },
+    "dyslipidemia": {
+     "type": "boolean",
+     "description": "Dyslipidemia (history)"
+    },
+    "chronic_renal_failure": {
+     "type": "boolean",
+     "description": "Chronic renal failure"
+    },
+    "cerebrovascular_accident": {
+     "type": "boolean",
+     "description": "Cerebrovascular accident"
+    },
+    "airway_disease": {
+     "type": "boolean",
+     "description": "Airway disease"
+    },
+    "thyroid_disease": {
+     "type": "boolean",
+     "description": "Thyroid disease"
+    },
+    "congestive_heart_failure": {
+     "type": "boolean",
+     "description": "Congestive heart failure"
+    },
+    "bp_mmhg": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Blood pressure (single value) (mmHg)"
+    },
+    "pulse_rate_bpm": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Pulse rate (bpm)"
+    },
+    "edema": {
+     "type": "boolean",
+     "description": "Edema"
+    },
+    "weak_peripheral_pulse": {
+     "type": "boolean",
+     "description": "Weak peripheral pulse"
+    },
+    "lung_rales": {
+     "type": "boolean",
+     "description": "Lung rales"
+    },
+    "systolic_murmur": {
+     "type": "boolean",
+     "description": "Systolic murmur"
+    },
+    "diastolic_murmur": {
+     "type": "boolean",
+     "description": "Diastolic murmur"
+    },
+    "chest_pain_type": {
+     "type": "string",
+     "enum": [
+      "typical",
+      "atypical",
+      "nonanginal",
+      "none"
+     ],
+     "description": "Chest pain type"
+    },
+    "dyspnea": {
+     "type": "boolean",
+     "description": "Dyspnea"
+    },
+    "function_class": {
+     "type": "integer",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "description": "Function Class (integer code as recorded)"
+    },
+    "low_threshold_angina": {
+     "type": "boolean",
+     "description": "Low-threshold angina"
+    },
+    "q_wave": {
+     "type": "boolean",
+     "description": "Q wave"
+    },
+    "st_elevation": {
+     "type": "boolean",
+     "description": "ST elevation"
+    },
+    "st_depression": {
+     "type": "boolean",
+     "description": "ST depression"
+    },
+    "t_inversion": {
+     "type": "boolean",
+     "description": "T-wave inversion"
+    },
+    "lvh": {
+     "type": "boolean",
+     "description": "Left ventricular hypertrophy"
+    },
+    "poor_r_progression": {
+     "type": "boolean",
+     "description": "Poor R-wave progression"
+    },
+    "bundle_branch_block": {
+     "type": "string",
+     "enum": [
+      "none",
+      "lbbb",
+      "rbbb"
+     ],
+     "description": "Bundle branch block"
+    },
+    "fbs": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Fasting blood sugar (mg/dL)"
+    },
+    "creatinine": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Creatinine (mg/dL)"
+    },
+    "tg": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Triglycerides (mg/dL)"
+    },
+    "ldl": {
+     "type": "number",
+     "minimum": 0,
+     "description": "LDL cholesterol (mg/dL)"
+    },
+    "hdl": {
+     "type": "number",
+     "minimum": 0,
+     "description": "HDL cholesterol (mg/dL)"
+    },
+    "bun": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Blood urea nitrogen (mg/dL)"
+    },
+    "esr": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Erythrocyte sedimentation rate (mm/h)"
+    },
+    "hemoglobin": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Hemoglobin (g/dL)"
+    },
+    "potassium": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Potassium (mEq/L)"
+    },
+    "sodium": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Sodium (mEq/L)"
+    },
+    "wbc": {
+     "type": "number",
+     "minimum": 0,
+     "description": "White blood cell count (cells/uL)"
+    },
+    "lymphocyte_pct": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Lymphocytes (%)"
+    },
+    "neutrophil_pct": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Neutrophils (%)"
+    },
+    "platelets": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Platelet count (x10^3/uL)"
+    },
+    "ef_tte_pct": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Ejection fraction (TTE) (%)"
+    },
+    "rwma_region": {
+     "type": "integer",
+     "enum": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "description": "Region with RWMA (integer code as recorded)"
+    },
+    "valvular_heart_disease": {
+     "type": "string",
+     "enum": [
+      "none",
+      "mild",
+      "moderate",
+      "severe"
+     ],
+     "description": "Valvular heart disease"
+    }
+   }
+  }
+ }
+}

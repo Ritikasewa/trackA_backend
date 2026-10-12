@@ -1,0 +1,86 @@
+{
+ "CAD": {
+  "model": "LR",
+  "cv_roc_auc": 0.9252,
+  "cv_roc_auc_ci95": [
+   0.8969,
+   0.9529
+  ],
+  "cv_brier": 0.0977,
+  "cv_brier_ci95": [
+   0.078,
+   0.1171
+  ],
+  "no_skill_brier": 0.2047,
+  "calibration_slope": 1.129,
+  "ece_5bin": 0.0218,
+  "prevalence": 0.7129,
+  "auc_within_cad_positive": null,
+  "discrimination_tier": "high",
+  "note": "Strongest model. Probabilities are conditional on a referral cohort with high CAD prevalence.",
+  "evaluation": "5x5 repeated stratified CV, tuning inside training folds; CIs are patient-bootstrap on out-of-fold predictions (optimistic)"
+ },
+ "LAD": {
+  "model": "LR",
+  "cv_roc_auc": 0.8295,
+  "cv_roc_auc_ci95": [
+   0.7815,
+   0.8695
+  ],
+  "cv_brier": 0.1627,
+  "cv_brier_ci95": [
+   0.1435,
+   0.1838
+  ],
+  "no_skill_brier": 0.2429,
+  "calibration_slope": 1.148,
+  "ece_5bin": 0.0435,
+  "prevalence": 0.5842,
+  "auc_within_cad_positive": 0.618,
+  "discrimination_tier": "moderate",
+  "note": "Moderate vessel-level discrimination; estimates partly track overall CAD risk.",
+  "evaluation": "5x5 repeated stratified CV, tuning inside training folds; CIs are patient-bootstrap on out-of-fold predictions (optimistic)"
+ },
+ "LCX": {
+  "model": "XGB",
+  "cv_roc_auc": 0.7337,
+  "cv_roc_auc_ci95": [
+   0.6768,
+   0.7847
+  ],
+  "cv_brier": 0.2039,
+  "cv_brier_ci95": [
+   0.1846,
+   0.2247
+  ],
+  "no_skill_brier": 0.2385,
+  "calibration_slope": 0.924,
+  "ece_5bin": 0.0412,
+  "prevalence": 0.3927,
+  "auc_within_cad_positive": 0.624,
+  "discrimination_tier": "limited",
+  "note": "LIMITED vessel-specific discrimination: this estimate mostly tracks overall CAD risk and distinguishes poorly which vessel is involved among CAD-positive patients. Interpret as a coarse estimate; no hard label is provided.",
+  "evaluation": "5x5 repeated stratified CV, tuning inside training folds; CIs are patient-bootstrap on out-of-fold predictions (optimistic)"
+ },
+ "RCA": {
+  "model": "LR",
+  "cv_roc_auc": 0.7124,
+  "cv_roc_auc_ci95": [
+   0.6573,
+   0.7656
+  ],
+  "cv_brier": 0.2066,
+  "cv_brier_ci95": [
+   0.1883,
+   0.226
+  ],
+  "no_skill_brier": 0.2347,
+  "calibration_slope": 0.869,
+  "ece_5bin": 0.0328,
+  "prevalence": 0.3762,
+  "auc_within_cad_positive": 0.576,
+  "discrimination_tier": "limited",
+  "note": "LIMITED vessel-specific discrimination: this estimate mostly tracks overall CAD risk and distinguishes poorly which vessel is involved among CAD-positive patients. Interpret as a coarse estimate; no hard label is provided.",
+  "evaluation": "5x5 repeated stratified CV, tuning inside training folds; CIs are patient-bootstrap on out-of-fold predictions (optimistic)"
+ }
+}

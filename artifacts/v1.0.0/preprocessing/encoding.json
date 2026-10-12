@@ -1,0 +1,415 @@
+{
+ "feature_order": [
+  "Age",
+  "Weight",
+  "Length",
+  "Sex",
+  "BMI",
+  "DM",
+  "HTN",
+  "Current Smoker",
+  "EX-Smoker",
+  "FH",
+  "CRF",
+  "CVA",
+  "Airway disease",
+  "Thyroid Disease",
+  "CHF",
+  "DLP",
+  "BP",
+  "PR",
+  "Edema",
+  "Weak Peripheral Pulse",
+  "Lung rales",
+  "Systolic Murmur",
+  "Diastolic Murmur",
+  "Typical Chest Pain",
+  "Dyspnea",
+  "Function Class",
+  "Atypical",
+  "Nonanginal",
+  "LowTH Ang",
+  "Q Wave",
+  "St Elevation",
+  "St Depression",
+  "Tinversion",
+  "LVH",
+  "Poor R Progression",
+  "FBS",
+  "CR",
+  "TG",
+  "LDL",
+  "HDL",
+  "BUN",
+  "ESR",
+  "HB",
+  "K",
+  "Na",
+  "WBC",
+  "Lymph",
+  "Neut",
+  "PLT",
+  "EF-TTE",
+  "Region RWMA",
+  "VHD",
+  "BBB_LBBB",
+  "BBB_RBBB"
+ ],
+ "fields": [
+  {
+   "api": "age",
+   "kind": "number",
+   "feature": "Age"
+  },
+  {
+   "api": "sex",
+   "kind": "enum",
+   "map": {
+    "male": {
+     "Sex": 1
+    },
+    "female": {
+     "Sex": 0
+    }
+   },
+   "enum": [
+    "male",
+    "female"
+   ]
+  },
+  {
+   "api": "weight_kg",
+   "kind": "number",
+   "feature": "Weight"
+  },
+  {
+   "api": "height_cm",
+   "kind": "number",
+   "feature": "Length"
+  },
+  {
+   "api": "diabetes",
+   "kind": "bool",
+   "feature": "DM"
+  },
+  {
+   "api": "hypertension",
+   "kind": "bool",
+   "feature": "HTN"
+  },
+  {
+   "api": "current_smoker",
+   "kind": "bool",
+   "feature": "Current Smoker"
+  },
+  {
+   "api": "ex_smoker",
+   "kind": "bool",
+   "feature": "EX-Smoker"
+  },
+  {
+   "api": "family_history",
+   "kind": "bool",
+   "feature": "FH"
+  },
+  {
+   "api": "dyslipidemia",
+   "kind": "bool",
+   "feature": "DLP"
+  },
+  {
+   "api": "chronic_renal_failure",
+   "kind": "bool",
+   "feature": "CRF"
+  },
+  {
+   "api": "cerebrovascular_accident",
+   "kind": "bool",
+   "feature": "CVA"
+  },
+  {
+   "api": "airway_disease",
+   "kind": "bool",
+   "feature": "Airway disease"
+  },
+  {
+   "api": "thyroid_disease",
+   "kind": "bool",
+   "feature": "Thyroid Disease"
+  },
+  {
+   "api": "congestive_heart_failure",
+   "kind": "bool",
+   "feature": "CHF"
+  },
+  {
+   "api": "bp_mmhg",
+   "kind": "number",
+   "feature": "BP"
+  },
+  {
+   "api": "pulse_rate_bpm",
+   "kind": "number",
+   "feature": "PR"
+  },
+  {
+   "api": "edema",
+   "kind": "bool",
+   "feature": "Edema"
+  },
+  {
+   "api": "weak_peripheral_pulse",
+   "kind": "bool",
+   "feature": "Weak Peripheral Pulse"
+  },
+  {
+   "api": "lung_rales",
+   "kind": "bool",
+   "feature": "Lung rales"
+  },
+  {
+   "api": "systolic_murmur",
+   "kind": "bool",
+   "feature": "Systolic Murmur"
+  },
+  {
+   "api": "diastolic_murmur",
+   "kind": "bool",
+   "feature": "Diastolic Murmur"
+  },
+  {
+   "api": "chest_pain_type",
+   "kind": "enum",
+   "map": {
+    "typical": {
+     "Typical Chest Pain": 1,
+     "Atypical": 0,
+     "Nonanginal": 0
+    },
+    "atypical": {
+     "Typical Chest Pain": 0,
+     "Atypical": 1,
+     "Nonanginal": 0
+    },
+    "nonanginal": {
+     "Typical Chest Pain": 0,
+     "Atypical": 0,
+     "Nonanginal": 1
+    },
+    "none": {
+     "Typical Chest Pain": 0,
+     "Atypical": 0,
+     "Nonanginal": 0
+    }
+   },
+   "enum": [
+    "typical",
+    "atypical",
+    "nonanginal",
+    "none"
+   ]
+  },
+  {
+   "api": "dyspnea",
+   "kind": "bool",
+   "feature": "Dyspnea"
+  },
+  {
+   "api": "function_class",
+   "kind": "int_enum",
+   "feature": "Function Class",
+   "allowed": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "api": "low_threshold_angina",
+   "kind": "bool",
+   "feature": "LowTH Ang"
+  },
+  {
+   "api": "q_wave",
+   "kind": "bool",
+   "feature": "Q Wave"
+  },
+  {
+   "api": "st_elevation",
+   "kind": "bool",
+   "feature": "St Elevation"
+  },
+  {
+   "api": "st_depression",
+   "kind": "bool",
+   "feature": "St Depression"
+  },
+  {
+   "api": "t_inversion",
+   "kind": "bool",
+   "feature": "Tinversion"
+  },
+  {
+   "api": "lvh",
+   "kind": "bool",
+   "feature": "LVH"
+  },
+  {
+   "api": "poor_r_progression",
+   "kind": "bool",
+   "feature": "Poor R Progression"
+  },
+  {
+   "api": "bundle_branch_block",
+   "kind": "enum",
+   "map": {
+    "none": {
+     "BBB_LBBB": 0,
+     "BBB_RBBB": 0
+    },
+    "lbbb": {
+     "BBB_LBBB": 1,
+     "BBB_RBBB": 0
+    },
+    "rbbb": {
+     "BBB_LBBB": 0,
+     "BBB_RBBB": 1
+    }
+   },
+   "enum": [
+    "none",
+    "lbbb",
+    "rbbb"
+   ]
+  },
+  {
+   "api": "fbs",
+   "kind": "number",
+   "feature": "FBS"
+  },
+  {
+   "api": "creatinine",
+   "kind": "number",
+   "feature": "CR"
+  },
+  {
+   "api": "tg",
+   "kind": "number",
+   "feature": "TG"
+  },
+  {
+   "api": "ldl",
+   "kind": "number",
+   "feature": "LDL"
+  },
+  {
+   "api": "hdl",
+   "kind": "number",
+   "feature": "HDL"
+  },
+  {
+   "api": "bun",
+   "kind": "number",
+   "feature": "BUN"
+  },
+  {
+   "api": "esr",
+   "kind": "number",
+   "feature": "ESR"
+  },
+  {
+   "api": "hemoglobin",
+   "kind": "number",
+   "feature": "HB"
+  },
+  {
+   "api": "potassium",
+   "kind": "number",
+   "feature": "K"
+  },
+  {
+   "api": "sodium",
+   "kind": "number",
+   "feature": "Na"
+  },
+  {
+   "api": "wbc",
+   "kind": "number",
+   "feature": "WBC"
+  },
+  {
+   "api": "lymphocyte_pct",
+   "kind": "number",
+   "feature": "Lymph"
+  },
+  {
+   "api": "neutrophil_pct",
+   "kind": "number",
+   "feature": "Neut"
+  },
+  {
+   "api": "platelets",
+   "kind": "number",
+   "feature": "PLT"
+  },
+  {
+   "api": "ef_tte_pct",
+   "kind": "number",
+   "feature": "EF-TTE"
+  },
+  {
+   "api": "rwma_region",
+   "kind": "int_enum",
+   "feature": "Region RWMA",
+   "allowed": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "api": "valvular_heart_disease",
+   "kind": "enum",
+   "map": {
+    "none": {
+     "VHD": 0
+    },
+    "mild": {
+     "VHD": 1
+    },
+    "moderate": {
+     "VHD": 2
+    },
+    "severe": {
+     "VHD": 3
+    }
+   },
+   "enum": [
+    "none",
+    "mild",
+    "moderate",
+    "severe"
+   ]
+  }
+ ],
+ "derived": [
+  {
+   "api": "bmi",
+   "feature": "BMI",
+   "formula": "weight_kg / (height_cm / 100) ** 2",
+   "note": "Computed server-side (dataset BMI equals this formula exactly). Must NOT be supplied by the client."
+  }
+ ],
+ "missing_value_policy": "none: every field is required; the server never imputes (no imputation was used in validation)",
+ "scaling": "Per-model StandardScaler parameters are stored inside each LR model file; XGBoost uses unscaled features",
+ "notes": [
+  "Obesity and Exertional CP are not model inputs",
+  "Sex 'Fmale' typo in source data = female",
+  "Chest-pain flags are exposed as one enum",
+  "BBB is exposed as one enum (none/lbbb/rbbb)",
+  "Region RWMA is one numeric feature (integer code 0-4 as recorded; the meaning of the codes is not interpreted)"
+ ]
+}

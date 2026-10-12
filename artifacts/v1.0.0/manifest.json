@@ -1,0 +1,110 @@
+{
+ "model_version": "v1.0.0",
+ "contract_version": "1.0.0",
+ "created_utc": "2026-10-01T20:21:49+00:00",
+ "environment": {
+  "python": "3.12.3",
+  "numpy": "2.4.4",
+  "pandas": "3.0.2",
+  "scikit_learn": "1.8.0",
+  "xgboost": "3.4.1",
+  "scipy": "1.17.1"
+ },
+ "seeds": {
+  "inner_cv_seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "xgboost_random_state": 0
+ },
+ "dataset_sha256": "739343245c2ba578b541370217531750d8e936022f928b83e0d91756caa3ff0b",
+ "contains_patient_level_data": [
+  "reference/train_features.csv",
+  "reference/train_labels.csv",
+  "tests/golden_*.json"
+ ],
+ "files": {
+  "model_card.json": {
+   "sha256": "1b3cb37b905b65ea2c5a1dcb9645a60f03a0e476089e9c0dc64d36bc25814d55",
+   "bytes": 5905
+  },
+  "model_contract.json": {
+   "sha256": "69a87a82dd3ad96fefad19a1dd22a5efeac31f12adf360fdbf1355ee462ecc46",
+   "bytes": 7523
+  },
+  "models/CAD_lr.json": {
+   "sha256": "c0c1517deef0b544aea01d323945d7e2d447883acc91ecc28f792f046a1a10c4",
+   "bytes": 4662
+  },
+  "models/LAD_lr.json": {
+   "sha256": "eea2a53a9933e1a601ce32b5688cb5643dddb587d483606aee229632838e1636",
+   "bytes": 4669
+  },
+  "models/LCX_xgb.json": {
+   "sha256": "b977da32d8e77fa935ac9d0df8f254db5131aebf42fc66c183db9e375a258931",
+   "bytes": 74975
+  },
+  "models/RCA_lr.json": {
+   "sha256": "4be68df35b585ebee671503d59576761c91249caf9db18639161198e5ac40cb0",
+   "bytes": 4679
+  },
+  "preprocessing/encoding.json": {
+   "sha256": "39222d7adb28d33c0ed774b70742c18b1ab69748d07f757a6c9066d9d51bf617",
+   "bytes": 6512
+  },
+  "preprocessing/training_stats.json": {
+   "sha256": "80ee81182e52bb77bde535da169f70edff3ce47aa088c5917d5ee61f82446d02",
+   "bytes": 15089
+  },
+  "reference/train_features.csv": {
+   "sha256": "5fddf7f4325fa5766717192bed9b5c7b23a5ee94a39d3448d30feb213017e92f",
+   "bytes": 79100
+  },
+  "reference/train_labels.csv": {
+   "sha256": "def285a64309454edc83b5f6817e682ed02b9ee92c9211e4f8a7abaed525dc5c",
+   "bytes": 3549
+  },
+  "schema/assess_request.schema.json": {
+   "sha256": "de921bf042110ef035061bd1072b5c51ac23d241411fa74dd6f1e0431c0970ce",
+   "bytes": 6890
+  },
+  "schema/assess_response.schema.json": {
+   "sha256": "110b9bbcc7ceb9d8b7990a5e060d62fa7f30023246bba02ac455464ccfcb90d2",
+   "bytes": 6108
+  },
+  "schema/error.schema.json": {
+   "sha256": "7fa0f3cdc8be65855df7dc82e8fb5cb0f627ef48944fe69885b4dbe5c726dda9",
+   "bytes": 629
+  },
+  "schema/features.json": {
+   "sha256": "c0ae5608af9549e89349c377de109f39ca8dc6f9f7a17bd8d807d7115e32f55b",
+   "bytes": 26526
+  },
+  "tests/golden_requests.json": {
+   "sha256": "cff3e1c76d8482f280efe89d47735d7236abe42b00f3ca7dacbe04dd9ff53a73",
+   "bytes": 5139
+  },
+  "tests/golden_responses.json": {
+   "sha256": "dfd17ac5be53ae8ed09e566624505a4566091622956c7ffad0c5550e67fbd1a3",
+   "bytes": 22603
+  },
+  "tests/golden_row_index.json": {
+   "sha256": "67c3a8c05ff47f062de1d9c876b8e603e2a2eeb61080a6c3c68a1431b679e4ec",
+   "bytes": 74
+  }
+ },
+ "metadata_revision": {
+  "note": "text/description-only revision: rwma_region/function_class descriptions (no assigned meanings), schema descriptions for consistency margin and input_checks, limitation wording",
+  "at_utc": "2026-10-01T20:34:05+00:00",
+  "changed_files": [
+   "model_card.json",
+   "preprocessing/encoding.json",
+   "schema/assess_request.schema.json",
+   "schema/assess_response.schema.json",
+   "schema/features.json"
+  ]
+ }
+}
