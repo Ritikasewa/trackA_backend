@@ -1,0 +1,262 @@
+{
+ "contract_version": "1.0.0",
+ "model_version": "v1.0.0",
+ "targets": [
+  {
+   "id": "CAD",
+   "label": "Overall CAD",
+   "definition": "Dataset overall CAD label (Cath = CAD). In the source data this equals >=50% narrowing in at least one of LAD/LCX/RCA for 302 of 303 patients.",
+   "model_type": "logistic_regression",
+   "file": "models/CAD_lr.json",
+   "calibration": "none (raw model probabilities; Platt/isotonic did not improve validated Brier)",
+   "n_train": 303,
+   "n_positive": 216,
+   "selection": {
+    "selected": {
+     "C": 0.1
+    },
+    "mean_inner_logloss_by_config": {
+     "{\"C\": 0.003}": 0.4788432357869551,
+     "{\"C\": 0.01}": 0.39058793587490637,
+     "{\"C\": 0.03}": 0.3314127907829042,
+     "{\"C\": 0.1}": 0.3068933319045346,
+     "{\"C\": 0.3}": 0.3229539503031223,
+     "{\"C\": 1.0}": 0.3843242296130015
+    },
+    "outer_fold_selection_counts_from_validation": {
+     "{\"C\": 0.1}": 24,
+     "{\"C\": 0.3}": 1
+    },
+    "agrees_with_outer_fold_mode": true,
+    "protocol": "5-fold stratified CV x 5 seeds on all 303 rows, minimum mean log-loss over the validated grid"
+   },
+   "hyperparameters": {
+    "C": 0.1
+   }
+  },
+  {
+   "id": "LAD",
+   "label": "LAD stenosis",
+   "definition": "Whole-vessel dataset label for LAD (>=50% narrowing). A vessel-level probability only; it carries NO information about lesion location.",
+   "model_type": "logistic_regression",
+   "file": "models/LAD_lr.json",
+   "calibration": "none (raw model probabilities; Platt/isotonic did not improve validated Brier)",
+   "n_train": 303,
+   "n_positive": 177,
+   "selection": {
+    "selected": {
+     "C": 0.03
+    },
+    "mean_inner_logloss_by_config": {
+     "{\"C\": 0.003}": 0.574980819528728,
+     "{\"C\": 0.01}": 0.5175800230813872,
+     "{\"C\": 0.03}": 0.49919752529842043,
+     "{\"C\": 0.1}": 0.5239317270034721,
+     "{\"C\": 0.3}": 0.5803246641463976,
+     "{\"C\": 1.0}": 0.6633555705218138
+    },
+    "outer_fold_selection_counts_from_validation": {
+     "{\"C\": 0.03}": 24,
+     "{\"C\": 0.1}": 1
+    },
+    "agrees_with_outer_fold_mode": true,
+    "protocol": "5-fold stratified CV x 5 seeds on all 303 rows, minimum mean log-loss over the validated grid"
+   },
+   "hyperparameters": {
+    "C": 0.03
+   }
+  },
+  {
+   "id": "LCX",
+   "label": "LCX stenosis",
+   "definition": "Whole-vessel dataset label for LCX (>=50% narrowing). A vessel-level probability only; it carries NO information about lesion location.",
+   "model_type": "xgboost",
+   "file": "models/LCX_xgb.json",
+   "calibration": "none (raw model probabilities; Platt/isotonic did not improve validated Brier)",
+   "n_train": 303,
+   "n_positive": 119,
+   "selection": {
+    "selected": {
+     "d": 2,
+     "n": 100
+    },
+    "mean_inner_logloss_by_config": {
+     "{\"d\": 2, \"n\": 100}": 0.5885865167622877,
+     "{\"d\": 2, \"n\": 250}": 0.5913587239798443,
+     "{\"d\": 3, \"n\": 100}": 0.5892472708449055,
+     "{\"d\": 3, \"n\": 250}": 0.6088223469748718
+    },
+    "outer_fold_selection_counts_from_validation": {
+     "{\"d\": 2, \"n\": 100}": 15,
+     "{\"d\": 3, \"n\": 100}": 9,
+     "{\"d\": 2, \"n\": 250}": 1
+    },
+    "agrees_with_outer_fold_mode": true,
+    "protocol": "5-fold stratified CV x 5 seeds on all 303 rows, minimum mean log-loss over the validated grid"
+   },
+   "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 2,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.6,
+    "min_child_weight": 2,
+    "reg_lambda": 2,
+    "tree_method": "hist",
+    "random_state": 0,
+    "objective": "binary:logistic"
+   }
+  },
+  {
+   "id": "RCA",
+   "label": "RCA stenosis",
+   "definition": "Whole-vessel dataset label for RCA (>=50% narrowing). A vessel-level probability only; it carries NO information about lesion location.",
+   "model_type": "logistic_regression",
+   "file": "models/RCA_lr.json",
+   "calibration": "none (raw model probabilities; Platt/isotonic did not improve validated Brier)",
+   "n_train": 303,
+   "n_positive": 114,
+   "selection": {
+    "selected": {
+     "C": 0.03
+    },
+    "mean_inner_logloss_by_config": {
+     "{\"C\": 0.003}": 0.6132305400421678,
+     "{\"C\": 0.01}": 0.5879045270955541,
+     "{\"C\": 0.03}": 0.5854134080285442,
+     "{\"C\": 0.1}": 0.6125461123062339,
+     "{\"C\": 0.3}": 0.6632579732121024,
+     "{\"C\": 1.0}": 0.7288700179554521
+    },
+    "outer_fold_selection_counts_from_validation": {
+     "{\"C\": 0.03}": 15,
+     "{\"C\": 0.01}": 9,
+     "{\"C\": 0.1}": 1
+    },
+    "agrees_with_outer_fold_mode": true,
+    "protocol": "5-fold stratified CV x 5 seeds on all 303 rows, minimum mean log-loss over the validated grid"
+   },
+   "hyperparameters": {
+    "C": 0.03
+   }
+  }
+ ],
+ "feature_order": [
+  "Age",
+  "Weight",
+  "Length",
+  "Sex",
+  "BMI",
+  "DM",
+  "HTN",
+  "Current Smoker",
+  "EX-Smoker",
+  "FH",
+  "CRF",
+  "CVA",
+  "Airway disease",
+  "Thyroid Disease",
+  "CHF",
+  "DLP",
+  "BP",
+  "PR",
+  "Edema",
+  "Weak Peripheral Pulse",
+  "Lung rales",
+  "Systolic Murmur",
+  "Diastolic Murmur",
+  "Typical Chest Pain",
+  "Dyspnea",
+  "Function Class",
+  "Atypical",
+  "Nonanginal",
+  "LowTH Ang",
+  "Q Wave",
+  "St Elevation",
+  "St Depression",
+  "Tinversion",
+  "LVH",
+  "Poor R Progression",
+  "FBS",
+  "CR",
+  "TG",
+  "LDL",
+  "HDL",
+  "BUN",
+  "ESR",
+  "HB",
+  "K",
+  "Na",
+  "WBC",
+  "Lymph",
+  "Neut",
+  "PLT",
+  "EF-TTE",
+  "Region RWMA",
+  "VHD",
+  "BBB_LBBB",
+  "BBB_RBBB"
+ ],
+ "n_features": 54,
+ "excluded_from_inputs": {
+  "targets_and_leakage": [
+   "LAD",
+   "LCX",
+   "RCA",
+   "Cath"
+  ],
+  "dropped_features": {
+   "Exertional CP": "constant (all N): zero information",
+   "Obesity": "deterministic BMI threshold; redundant"
+  },
+  "second_sheet": "empty - not used",
+  "post_cath_information": "none present"
+ },
+ "preprocessing": {
+  "imputation": "none (all inputs required)",
+  "scaling": "StandardScaler inside each LR model; none for XGBoost",
+  "encoding_file": "preprocessing/encoding.json",
+  "derived": [
+   {
+    "api": "bmi",
+    "feature": "BMI",
+    "formula": "weight_kg / (height_cm / 100) ** 2",
+    "note": "Computed server-side (dataset BMI equals this formula exactly). Must NOT be supplied by the client."
+   }
+  ]
+ },
+ "output": {
+  "probabilities": "raw model probabilities, rounded to 4 decimals; no calibration layer; never post-hoc modified",
+  "hard_labels_returned": false
+ },
+ "consistency_margin": 0.1,
+ "sparse_category_threshold": 10,
+ "forbidden_target_names": [
+  "cad",
+  "cath",
+  "lad",
+  "lcx",
+  "rca"
+ ],
+ "derived_names": [
+  "bmi",
+  "obesity"
+ ],
+ "population_note": "Probabilities are conditional on the training population (patients referred for angiography; 71% CAD prevalence) and are not general-population risk.",
+ "disclaimer": {
+  "short": "Decision support / educational use only. Not a diagnosis and not a substitute for formal diagnostic imaging.",
+  "text": "These estimates come from a statistical research model trained on 303 patients from a single referral cohort. They are for decision-support and educational purposes only. They are not a diagnosis, do not show where a blockage is, and are not a substitute for formal diagnostic imaging (e.g., coronary angiography or CT angiography) or evaluation by a clinician.",
+  "required_display": true
+ },
+ "training": {
+  "n": 303,
+  "source": "z_dataset.xlsx sheet 1 (Extension of Z-Alizadeh Sani)",
+  "source_sha256": "739343245c2ba578b541370217531750d8e936022f928b83e0d91756caa3ff0b",
+  "class_counts": {
+   "CAD": 216,
+   "LAD": 177,
+   "LCX": 119,
+   "RCA": 114
+  }
+ }
+}

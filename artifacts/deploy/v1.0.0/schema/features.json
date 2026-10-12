@@ -1,0 +1,988 @@
+{
+ "contract_version": "1.0.0",
+ "groups": [
+  "demographics",
+  "history_risk_factors",
+  "exam_symptoms",
+  "ecg",
+  "labs",
+  "echo"
+ ],
+ "fields": [
+  {
+   "api": "age",
+   "kind": "number",
+   "group": "demographics",
+   "label": "Age",
+   "unit": "years",
+   "unit_status": "as_recorded",
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": false,
+   "observed": {
+    "min": 30.0,
+    "max": 86.0,
+    "p01": 38.0,
+    "p99": 81.0,
+    "median": 58.0
+   },
+   "default_for_form": 58.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "sex",
+   "kind": "enum",
+   "group": "demographics",
+   "label": "Sex",
+   "unit": null,
+   "unit_status": null,
+   "description": "Dataset value 'Fmale' (typo) is treated as female.",
+   "whatif_editable": false,
+   "modifiable": false,
+   "enum": [
+    "male",
+    "female"
+   ],
+   "observed_counts": {
+    "male": 176,
+    "female": 127
+   },
+   "default_for_form": "male",
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "weight_kg",
+   "kind": "number",
+   "group": "demographics",
+   "label": "Weight",
+   "unit": "kg",
+   "unit_status": "verified_via_BMI_formula",
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed": {
+    "min": 48.0,
+    "max": 120.0,
+    "p01": 50.0,
+    "p99": 104.96,
+    "median": 74.0
+   },
+   "default_for_form": 74.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "height_cm",
+   "kind": "number",
+   "group": "demographics",
+   "label": "Height",
+   "unit": "cm",
+   "unit_status": "verified_via_BMI_formula",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 140.0,
+    "max": 188.0,
+    "p01": 145.04,
+    "p99": 185.0,
+    "median": 165.0
+   },
+   "default_for_form": 165.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "diabetes",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Diabetes mellitus",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 213,
+    "true": 90
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "hypertension",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Hypertension (history)",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "true": 179,
+    "false": 124
+   },
+   "default_for_form": true,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "current_smoker",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Current smoker",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed_counts": {
+    "true": 63,
+    "false": 240
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "ex_smoker",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Ex-smoker",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 293,
+    "true": 10
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "family_history",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Family history of CAD",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 255,
+    "true": 48
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "dyslipidemia",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Dyslipidemia (history)",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "true": 112,
+    "false": 191
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "chronic_renal_failure",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Chronic renal failure",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 297,
+    "true": 6
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "cerebrovascular_accident",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Cerebrovascular accident",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 298,
+    "true": 5
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "airway_disease",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Airway disease",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 292,
+    "true": 11
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "thyroid_disease",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Thyroid disease",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 296,
+    "true": 7
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "congestive_heart_failure",
+   "kind": "bool",
+   "group": "history_risk_factors",
+   "label": "Congestive heart failure",
+   "unit": null,
+   "unit_status": null,
+   "description": "Only 1 positive in training data.",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 302,
+    "true": 1
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "bp_mmhg",
+   "kind": "number",
+   "group": "exam_symptoms",
+   "label": "Blood pressure (single value)",
+   "unit": "mmHg",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": "One value as recorded in the dataset; presumed systolic - verify against dataset documentation.",
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed": {
+    "min": 90.0,
+    "max": 190.0,
+    "p01": 90.2,
+    "p99": 180.0,
+    "median": 130.0
+   },
+   "default_for_form": 130.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "pulse_rate_bpm",
+   "kind": "number",
+   "group": "exam_symptoms",
+   "label": "Pulse rate",
+   "unit": "bpm",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 50.0,
+    "max": 110.0,
+    "p01": 60.0,
+    "p99": 100.0,
+    "median": 70.0
+   },
+   "default_for_form": 70.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "edema",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Edema",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 291,
+    "true": 12
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "weak_peripheral_pulse",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Weak peripheral pulse",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 298,
+    "true": 5
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "lung_rales",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Lung rales",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 292,
+    "true": 11
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "systolic_murmur",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Systolic murmur",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 262,
+    "true": 41
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "diastolic_murmur",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Diastolic murmur",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 294,
+    "true": 9
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "chest_pain_type",
+   "kind": "enum",
+   "group": "exam_symptoms",
+   "label": "Chest pain type",
+   "unit": null,
+   "unit_status": null,
+   "description": "In the dataset the three chest-pain flags are mutually exclusive, so they are exposed as ONE category (prevents impossible combinations).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "enum": [
+    "typical",
+    "atypical",
+    "nonanginal",
+    "none"
+   ],
+   "observed_counts": {
+    "none": 30,
+    "typical": 164,
+    "nonanginal": 16,
+    "atypical": 93
+   },
+   "default_for_form": "typical",
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "dyspnea",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Dyspnea",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 169,
+    "true": 134
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "function_class",
+   "kind": "int_enum",
+   "group": "exam_symptoms",
+   "label": "Function Class (integer code as recorded)",
+   "unit": null,
+   "unit_status": null,
+   "description": "Integer code 0-3 exactly as recorded in the dataset (column 'Function Class'). The meaning of the individual codes is not documented in the provided files and no meaning is assigned here; the model uses the value as a number. Value 1 occurs only once in the training data.",
+   "whatif_editable": false,
+   "modifiable": false,
+   "allowed": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "observed_counts": {
+    "0": 211,
+    "3": 18,
+    "2": 73,
+    "1": 1
+   },
+   "default_for_form": 0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "low_threshold_angina",
+   "kind": "bool",
+   "group": "exam_symptoms",
+   "label": "Low-threshold angina",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 301,
+    "true": 2
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "q_wave",
+   "kind": "bool",
+   "group": "ecg",
+   "label": "Q wave",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 287,
+    "true": 16
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "st_elevation",
+   "kind": "bool",
+   "group": "ecg",
+   "label": "ST elevation",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 289,
+    "true": 14
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "st_depression",
+   "kind": "bool",
+   "group": "ecg",
+   "label": "ST depression",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "true": 71,
+    "false": 232
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "t_inversion",
+   "kind": "bool",
+   "group": "ecg",
+   "label": "T-wave inversion",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "true": 90,
+    "false": 213
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "lvh",
+   "kind": "bool",
+   "group": "ecg",
+   "label": "Left ventricular hypertrophy",
+   "unit": null,
+   "unit_status": null,
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 283,
+    "true": 20
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "poor_r_progression",
+   "kind": "bool",
+   "group": "ecg",
+   "label": "Poor R-wave progression",
+   "unit": null,
+   "unit_status": null,
+   "description": "Sparse in training data (<10 positives).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed_counts": {
+    "false": 294,
+    "true": 9
+   },
+   "default_for_form": false,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "bundle_branch_block",
+   "kind": "enum",
+   "group": "ecg",
+   "label": "Bundle branch block",
+   "unit": null,
+   "unit_status": null,
+   "description": "RBBB is sparse in training data (<10 patients).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "enum": [
+    "none",
+    "lbbb",
+    "rbbb"
+   ],
+   "observed_counts": {
+    "none": 282,
+    "lbbb": 13,
+    "rbbb": 8
+   },
+   "default_for_form": "none",
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "fbs",
+   "kind": "number",
+   "group": "labs",
+   "label": "Fasting blood sugar",
+   "unit": "mg/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed": {
+    "min": 62.0,
+    "max": 400.0,
+    "p01": 70.0,
+    "p99": 319.6,
+    "median": 98.0
+   },
+   "default_for_form": 98.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "creatinine",
+   "kind": "number",
+   "group": "labs",
+   "label": "Creatinine",
+   "unit": "mg/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 0.5,
+    "max": 2.2,
+    "p01": 0.6,
+    "p99": 1.9,
+    "median": 1.0
+   },
+   "default_for_form": 1.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "tg",
+   "kind": "number",
+   "group": "labs",
+   "label": "Triglycerides",
+   "unit": "mg/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed": {
+    "min": 37.0,
+    "max": 1050.0,
+    "p01": 46.08,
+    "p99": 449.94,
+    "median": 122.0
+   },
+   "default_for_form": 122.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "ldl",
+   "kind": "number",
+   "group": "labs",
+   "label": "LDL cholesterol",
+   "unit": "mg/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed": {
+    "min": 18.0,
+    "max": 232.0,
+    "p01": 36.06,
+    "p99": 202.92,
+    "median": 100.0
+   },
+   "default_for_form": 100.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "hdl",
+   "kind": "number",
+   "group": "labs",
+   "label": "HDL cholesterol",
+   "unit": "mg/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": true,
+   "modifiable": true,
+   "observed": {
+    "min": 15.9,
+    "max": 111.0,
+    "p01": 22.0,
+    "p99": 66.98,
+    "median": 39.0
+   },
+   "default_for_form": 39.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "bun",
+   "kind": "number",
+   "group": "labs",
+   "label": "Blood urea nitrogen",
+   "unit": "mg/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 6.0,
+    "max": 52.0,
+    "p01": 8.0,
+    "p99": 40.98,
+    "median": 16.0
+   },
+   "default_for_form": 16.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "esr",
+   "kind": "number",
+   "group": "labs",
+   "label": "Erythrocyte sedimentation rate",
+   "unit": "mm/h",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 1.0,
+    "max": 90.0,
+    "p01": 2.0,
+    "p99": 75.86,
+    "median": 15.0
+   },
+   "default_for_form": 15.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "hemoglobin",
+   "kind": "number",
+   "group": "labs",
+   "label": "Hemoglobin",
+   "unit": "g/dL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 8.9,
+    "max": 17.6,
+    "p01": 9.0,
+    "p99": 16.992,
+    "median": 13.2
+   },
+   "default_for_form": 13.2,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "potassium",
+   "kind": "number",
+   "group": "labs",
+   "label": "Potassium",
+   "unit": "mEq/L",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 3.0,
+    "max": 6.6,
+    "p01": 3.2,
+    "p99": 5.4,
+    "median": 4.2
+   },
+   "default_for_form": 4.2,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "sodium",
+   "kind": "number",
+   "group": "labs",
+   "label": "Sodium",
+   "unit": "mEq/L",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 128.0,
+    "max": 156.0,
+    "p01": 131.0,
+    "p99": 152.98,
+    "median": 141.0
+   },
+   "default_for_form": 141.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "wbc",
+   "kind": "number",
+   "group": "labs",
+   "label": "White blood cell count",
+   "unit": "cells/uL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 3700.0,
+    "max": 18000.0,
+    "p01": 4100.0,
+    "p99": 15988.0,
+    "median": 7100.0
+   },
+   "default_for_form": 7100.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "lymphocyte_pct",
+   "kind": "number",
+   "group": "labs",
+   "label": "Lymphocytes",
+   "unit": "%",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 7.0,
+    "max": 60.0,
+    "p01": 10.0,
+    "p99": 57.94,
+    "median": 32.0
+   },
+   "default_for_form": 32.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "neutrophil_pct",
+   "kind": "number",
+   "group": "labs",
+   "label": "Neutrophils",
+   "unit": "%",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 32.0,
+    "max": 89.0,
+    "p01": 38.02,
+    "p99": 83.98,
+    "median": 60.0
+   },
+   "default_for_form": 60.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "platelets",
+   "kind": "number",
+   "group": "labs",
+   "label": "Platelet count",
+   "unit": "x10^3/uL",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 25.0,
+    "max": 742.0,
+    "p01": 129.04,
+    "p99": 380.0,
+    "median": 210.0
+   },
+   "default_for_form": 210.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "ef_tte_pct",
+   "kind": "number",
+   "group": "echo",
+   "label": "Ejection fraction (TTE)",
+   "unit": "%",
+   "unit_status": "inferred_from_value_range_unverified",
+   "description": null,
+   "whatif_editable": false,
+   "modifiable": false,
+   "observed": {
+    "min": 15.0,
+    "max": 60.0,
+    "p01": 20.0,
+    "p99": 60.0,
+    "median": 50.0
+   },
+   "default_for_form": 50.0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "rwma_region",
+   "kind": "int_enum",
+   "group": "echo",
+   "label": "Region with RWMA (integer code as recorded)",
+   "unit": null,
+   "unit_status": null,
+   "description": "Integer code 0-4 exactly as recorded in the dataset (column 'Region RWMA'; the problem statement describes it as the region with a regional wall motion abnormality). The meaning of the individual codes is not documented in the provided files and no meaning is assigned here; the model uses the value as a number. It is an echocardiographic input, not a lesion location.",
+   "whatif_editable": false,
+   "modifiable": false,
+   "allowed": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "observed_counts": {
+    "0": 217,
+    "4": 14,
+    "2": 32,
+    "3": 14,
+    "1": 26
+   },
+   "default_for_form": 0,
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  },
+  {
+   "api": "valvular_heart_disease",
+   "kind": "enum",
+   "group": "echo",
+   "label": "Valvular heart disease",
+   "unit": null,
+   "unit_status": null,
+   "description": "Ordinal severity (none<mild<moderate<severe).",
+   "whatif_editable": false,
+   "modifiable": false,
+   "enum": [
+    "none",
+    "mild",
+    "moderate",
+    "severe"
+   ],
+   "observed_counts": {
+    "none": 116,
+    "mild": 149,
+    "severe": 11,
+    "moderate": 27
+   },
+   "default_for_form": "mild",
+   "default_note": "Population-typical value (training median/mode) for form pre-fill only. The server never applies defaults."
+  }
+ ],
+ "derived": [
+  {
+   "api": "bmi",
+   "feature": "BMI",
+   "formula": "weight_kg / (height_cm / 100) ** 2",
+   "note": "Computed server-side (dataset BMI equals this formula exactly). Must NOT be supplied by the client."
+  }
+ ],
+ "rejected_input_names": {
+  "targets_leakage": [
+   "cad",
+   "cath",
+   "lad",
+   "lcx",
+   "rca"
+  ],
+  "derived": [
+   "bmi",
+   "obesity"
+  ]
+ }
+}

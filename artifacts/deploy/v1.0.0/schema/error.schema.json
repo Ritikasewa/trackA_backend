@@ -1,0 +1,36 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "trackA/error/1.0.0",
+ "title": "ValidationError (HTTP 422)",
+ "type": "object",
+ "required": [
+  "errors"
+ ],
+ "properties": {
+  "errors": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "field",
+     "code",
+     "message"
+    ],
+    "properties": {
+     "code": {
+      "enum": [
+       "missing_field",
+       "unknown_field",
+       "forbidden_target_field",
+       "derived_field_not_accepted",
+       "invalid_type",
+       "invalid_enum",
+       "not_finite",
+       "invalid_value"
+      ]
+     }
+    }
+   }
+  }
+ }
+}
